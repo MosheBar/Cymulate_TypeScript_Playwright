@@ -1,0 +1,13 @@
+# Node modules
+node_modules/
+
+# TypeScript compiled output
+dist/
+
+# IDE specific files
+.idea/
+.vscode/
+
+# Test reports
+allure-results/
+test-results/

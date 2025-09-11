@@ -1,0 +1,25 @@
+{
+  "name": "moshe_barda_Cymulate",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "prettier:check": "prettier --check .",
+    "prettier:write": "prettier --write .",
+    "test:prod": "npx rimraf allure-results playwright-report && npx cross-env NODE_ENV=production npx playwright test",
+    "test:alpha": "npx rimraf allure-results playwright-report && npx cross-env NODE_ENV=alpha npx playwright test"
+  },
+  "keywords": [],
+  "author": "Moses Barda",
+  "license": "ISC",
+  "description": "Cymulate Playwright E2E Tests",
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^22.13.2",
+    "allure-commandline": "^2.32.2",
+    "allure-playwright": "^3.1.0",
+    "cross-env": "^10.0.0",
+    "prettier": "^3.5.0",
+    "rimraf": "^5.0.0",
+    "typescript": "^5.7.3"
+  }
+}
