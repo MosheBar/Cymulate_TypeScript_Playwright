@@ -15,4 +15,15 @@ export class BasePage {
   async getTitle(): Promise<string> {
     return await this.page.title();
   }
+
+  @step('Get current URL')
+  async getCurrentURL(): Promise<string> {
+    return this.page.url();
+  }
+
+  @step('Refresh the page')
+  async refresh() {
+    await this.page.reload();
+  }
+    
 }

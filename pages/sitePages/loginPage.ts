@@ -39,7 +39,7 @@ export class LoginPage extends BasePage {
     }
 
     @step('Get login header title')
-    async getLoginHeaderTitle(): Promise<string> {
-        return await this.loginHeaderTitle.innerText();
+    async getLoginHeaderTitle() {
+        return this.loginHeaderTitle;
     }
 }

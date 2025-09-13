@@ -5,12 +5,20 @@ export class DownloadPage {
     private page: Page;
     private self: Locator;
     private clearAll: Locator;
+    private closeButton: Locator;
     
 
     constructor(page: Page) {
         this.page = page;
-        this.self = page.locator('[data-testid="download-manager-overlay-content"]');;
-        this.clearAll = page.locator('button[data-testid="download-manager-clear-all-button"]');
+        this.self = page.getByTestId('download-manager-overlay-content');
+        this.clearAll = this.self.getByTestId('download-manager-clear-all-button');
+        this.closeButton = this.self.getByTestId('overlay-content-close-button-Downloads');
+    }
+
+    @step('close download page')
+    async closeDownloadPage() {
+        await this.closeButton.click();
+        await expect(this.self).toBeHidden();
     }
 
     @step('clear downloads if exists')
@@ -18,6 +26,8 @@ export class DownloadPage {
         if(await this.clearAll.isVisible()){
             await this.clearAll.click();
             await expect(this.clearAll).toBeHidden();
+        }else{
+            await this.closeDownloadPage();
         }
     }     
 }

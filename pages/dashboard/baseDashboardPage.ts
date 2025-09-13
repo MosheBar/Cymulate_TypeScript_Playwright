@@ -3,15 +3,18 @@ import { config } from '../../config/config';
 import { step } from '../../infra/decorators/stepDecorator';
 import { BasePage } from '../sitePages/basePage';
 import { ActionBar, ActionBarButton } from './containers/actionBar/actionBar';
+import { NavigationBar, NavigationBarButton } from './containers/navigationBar/navigationBar';
 
 export class BaseDashboardPage extends BasePage {
     private logo: Locator;
     private actionBar: ActionBar; 
+    private navigationBar: NavigationBar;
 
     constructor(page: Page) {
         super(page);
-        this.logo = page.locator('[data-testid="logo-container"]');
+        this.logo = page.getByTestId('logo-container');
         this.actionBar = new ActionBar(page);
+        this.navigationBar = new NavigationBar(page);
     }
 
     @step('Validate Dashboard page')
@@ -23,5 +26,10 @@ export class BaseDashboardPage extends BasePage {
     async clickActionBar(actionButton: typeof ActionBarButton[keyof typeof ActionBarButton]) {
         return await this.actionBar.clickActionButton(actionButton);
 
+    }
+
+    @step('click NavigationBar')
+    async clickNavigationBar(navigationButton: typeof NavigationBarButton[keyof typeof NavigationBarButton]) {
+        return await this.navigationBar.clickNavigationButton(navigationButton);
     }
 }

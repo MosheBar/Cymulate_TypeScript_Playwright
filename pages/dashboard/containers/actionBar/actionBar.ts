@@ -17,7 +17,7 @@ export class ActionBar {
     constructor(page: Page) {
         this.page = page;
         this.self = page.locator('[class^="Header_navbar-right"]');;
-        this.downloadButton = page.locator('button[data-testid="DownloadIcon"]');
+        this.downloadButton = page.getByTestId('DownloadIcon');
     }
 
     @step('click on Action button')
